@@ -7,11 +7,6 @@ exceptCompany = '07. BUHEUNG'
 aa = list()
 
 for(root, directories, files) in os.walk(dir_path):
-    # directory 순회
-    # for d in directories:
-    #     if d not in exceptDict:
-    #         d_path = os.path.join(root,d)
-
     # file 순회
     for file in files:
         if '.json' in file:
@@ -23,12 +18,13 @@ for(root, directories, files) in os.walk(dir_path):
                 for key in jsonData.keys():
                     if key == 'notes':
                        flag = 1
-                    # if(key == 'pwht'):
-                    #     jsonData[key] = 'postweld_heat_treatment'
+                       aa.append(file_path)
                     counts[key] = counts.get(key,0)+1
 
                 if flag == 0:
                     jsonData['notes'] = {}
+                    with open(file_path, 'w', encoding='utf-8') as mk_f:
+                        json.dump(jsonData, mk_f, indent='\t')
 
 for item in counts.items():
     print(item)
