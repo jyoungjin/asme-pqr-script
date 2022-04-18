@@ -4,7 +4,6 @@ import os
 dir_path = "/Users/youngjin/workspace/otos/pqr-json-data"
 counts = dict()
 exceptCompany = '07. BUHEUNG'
-aa = list()
 
 for(root, directories, files) in os.walk(dir_path):
     # directory 순회
@@ -21,8 +20,8 @@ for(root, directories, files) in os.walk(dir_path):
                     jsonData = json.load(file)
                     flag = 0;
                 for key in jsonData.keys():
-                    if key == 'notes':
-                       flag = 1
+                    # if key == 'notes':
+                    #    flag = 1
                     # if(key == 'pwht'):
                     #     jsonData[key] = 'postweld_heat_treatment'
                     counts[key] = counts.get(key,0)+1
@@ -33,7 +32,4 @@ for(root, directories, files) in os.walk(dir_path):
 for item in counts.items():
     print(item)
 
-for file_path in aa:
-    print(file_path)
-
-# print("=============================================")
+ # print("=============================================")
