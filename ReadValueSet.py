@@ -22,7 +22,11 @@ for(root, directories, files) in os.walk(dir_path):
                     jsonData = json.load(file)
                     if find_key in jsonData[find_section]:
                         key = jsonData[find_section][find_key]
-                        counts[key] = counts.get(key, 0)+1
+                        if type(key) == dict:
+                            for item in key.values():
+                                counts[item] = counts.get(item, 0)+1
+                        else:
+                            counts[key] = counts.get(key, 0) + 1
 
 for item in counts.items():
     print(item)

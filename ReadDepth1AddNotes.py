@@ -13,8 +13,8 @@ for(root, directories, files) in os.walk(dir_path):
             if exceptCompany not in file_path:
                 with open(file_path, 'r') as file:
                     jsonData = json.load(file)
-                if 'other' in jsonData['base_metals']:
-                   jsonData['base_metals']['others'] = jsonData['base_metals']['other']
-                   del jsonData['base_metals']['other']
+                if 'other' in jsonData['position']:
+                   jsonData['position']['others'] = jsonData['position']['other']
+                   del jsonData['position']['other']
                    with open(file_path, 'w', encoding='utf-8') as mk_f:
                        json.dump(jsonData, mk_f, indent=4, ensure_ascii=False)
