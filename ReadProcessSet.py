@@ -2,9 +2,9 @@ import json
 import os
 import sys
 
-dir_path = "/Users/youngjin/workspace/otos/pqr-json-data"
+dir_path = "/Users/youngjin/workspace/json-data/asme-pqr"
 counts = dict()
-allCnt = 0;
+allCnt = 0
 
 for(root, directories, files) in os.walk(dir_path):
     # file 순회

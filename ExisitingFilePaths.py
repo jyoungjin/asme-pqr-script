@@ -2,7 +2,7 @@ import json
 import os
 import sys
 
-dir_path = "/Users/youngjin/workspace/otos/pqr-json-data"
+dir_path = "/Users/youngjin/workspace/json-data/asme-pqr"
 counts = dict()
 exceptCompany = '07. BUHEUNG'
 find_section = sys.argv[1]

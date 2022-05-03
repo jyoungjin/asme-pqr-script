@@ -1,7 +1,7 @@
 import json
 import os
 
-dir_path = "/Users/youngjin/workspace/otos/pqr-json-data"
+dir_path = "/Users/youngjin/workspace/json-data/asme-pqr"
 counts = dict()
 exceptCompany = '07. BUHEUNG'
 
@@ -18,7 +18,7 @@ for(root, directories, files) in os.walk(dir_path):
             if exceptCompany not in file_path:
                 with open(file_path, 'r') as file:
                     jsonData = json.load(file)
-                    flag = 0;
+                    flag = 0
                 for key in jsonData.keys():
                     # if key == 'notes':
                     #    flag = 1
