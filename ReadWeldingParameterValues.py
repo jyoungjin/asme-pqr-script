@@ -4,7 +4,6 @@ import sys
 
 dir_path = "/Users/youngjin/workspace/json-data/asme-pqr"
 counts = dict()
-exceptCompany = '07. BUHEUNG'
 find_key = sys.argv[1]
 
 if len(sys.argv) != 2:
@@ -16,13 +15,12 @@ for(root, directories, files) in os.walk(dir_path):
     for file in files:
         if '.json' in file:
             file_path = os.path.join(root, file)
-            if exceptCompany not in file_path:
-                with open(file_path, 'r') as file:
-                    jsonData = json.load(file)
-                for object in jsonData['welding_parameters']:
-                    for key in object:
-                        if key == find_key:
-                            counts[object[find_key]] = counts.get(key, 0)+1
+            with open(file_path, 'r') as file:
+                jsonData = json.load(file)
+            for object in jsonData['welding_parameters']:
+                for key in object:
+                    if key == find_key:
+                        counts[object[find_key]] = counts.get(key, 0)+1
 
 for item in counts.items():
     print(item)
