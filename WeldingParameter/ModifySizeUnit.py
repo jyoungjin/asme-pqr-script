@@ -4,11 +4,6 @@ import sys
 
 dir_path = "/Users/youngjin/workspace/json-data/asme-pqr"
 counts = dict()
-find_key = sys.argv[1]
-
-if len(sys.argv) != 2:
-    print("Insufficient arguments")
-    sys.exit()
 
 for(root, directories, files) in os.walk(dir_path):
     # file 순회
@@ -18,14 +13,15 @@ for(root, directories, files) in os.walk(dir_path):
             with open(file_path, 'r') as file:
                 jsonData = json.load(file)
             for object in jsonData['welding_parameters']:
-                for key in object:
-                    if key == find_key:
-                        counts[object[find_key]] = counts.get(key, 0)+1
-
-for item in counts.items():
-    print(item)
-
-print(len(counts))
+                if "size(mm)" in object:
+                    sizeVal = object["size(mm)"]
+                    if sizeVal is None:
+                        object["size(mm)"] = None
+                    else:
+                        sizeVal = sizeVal.strip("ø")
+                        object["size(mm)"] = float(sizeVal)
+                    with open(file_path, 'w', encoding='utf-8') as mk_f:
+                        json.dump(jsonData, mk_f, indent=2, ensure_ascii=False)
 
 # for item in counts.keys():
 #     print(item, end=', ')

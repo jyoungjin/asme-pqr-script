@@ -27,7 +27,7 @@ for(root, directories, files) in os.walk(dir_path):
 for item in counts.items():
     print(item)
 
-print("총 파일수: ",allCnt)
+print("총 파일수: ", allCnt)
 
 # for item in counts.keys():
 #     print(item, end=', ')
