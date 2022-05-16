@@ -22,10 +22,17 @@ for(root, directories, files) in os.walk(dir_path):
                     if key == find_key:
                         counts[object[find_key]] = counts.get(object[find_key], 0)+1
 
-for item in sorted(counts.items()):
-    print(item)
+minVal = 1000
+maxVal = 0
 
-print(len(counts))
+for item in sorted(counts.keys()):
+    if item < minVal:
+        minVal = item
+    if item > maxVal:
+        maxVal = item
+
+print(minVal)
+print(maxVal)
 
 # for item in counts.keys():
 #     print(item, end=', ')
