@@ -24,6 +24,3 @@ for item in counts.items():
     print(item)
 
 print(len(counts))
-
-# for item in counts.keys():
-#     print(item, end=', ')
