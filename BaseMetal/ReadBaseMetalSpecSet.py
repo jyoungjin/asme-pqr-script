@@ -14,19 +14,15 @@ for(root, directories, files) in os.walk(dir_path):
             file_path = os.path.join(root, file)
             with open(file_path, 'r') as file:
                 jsonData = json.load(file)
-                if 'material_spec' in jsonData['base_metals'] and 'type_and_grade' in jsonData['base_metals']:
+                if '_material_spec' in jsonData['base_metals'] and '_type_and_grade' in jsonData['base_metals'] and '_to_material_spec' in jsonData['base_metals'] and '_to_type_and_grade' in jsonData['base_metals']:
 
-                    material_spec = jsonData['base_metals']['material_spec']
-                    to_material_spec = jsonData['base_metals']['to_material_spec']
-                    type_and_grade = jsonData['base_metals']['type_and_grade']
-                    to_type_and_grade = jsonData['base_metals']['to_type_and_grade']
-                    p_no = jsonData['base_metals']['p_no']
-                    to_p_no = jsonData['base_metals']['to_p_no']
-                    gr_no = jsonData['base_metals']['gr_no']
-                    to_gr_no = jsonData['base_metals']['to_gr_no']
+                    material_spec = jsonData['base_metals']['_material_spec']
+                    to_material_spec = jsonData['base_metals']['_to_material_spec']
+                    type_and_grade = jsonData['base_metals']['_type_and_grade']
+                    to_type_and_grade = jsonData['base_metals']['_to_type_and_grade']
 
-                    key = "spec: "+material_spec+",type: "+type_and_grade+",p no: "+p_no+",gr no: "+gr_no
-                    to_key = "spec: "+to_material_spec+",type: "+to_type_and_grade+",p no: "+to_p_no+",gr no: "+to_gr_no
+                    key = "spec: "+str(material_spec)+",type: "+str(type_and_grade)
+                    to_key = "spec: "+str(to_material_spec)+",type: "+str(to_type_and_grade)
                     counts[key] = counts.get(key, 0) + 1
                     counts[to_key] = counts.get(to_key, 0) + 1
 
