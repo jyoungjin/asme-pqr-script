@@ -26,7 +26,11 @@ for(root, directories, files) in os.walk(dir_path):
                     else:
                         counts[key] = counts.get(key, 0) + 1
 
-for item in counts.items():
-    print(item)
+sum = 0
 
-print(len(counts))
+for key, value in counts.items():
+    print(key, value)
+    sum += value
+
+print("종류 "+str(len(counts)))
+print("합계: "+str(sum))

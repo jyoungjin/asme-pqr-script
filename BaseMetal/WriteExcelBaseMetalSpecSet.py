@@ -30,18 +30,18 @@ for(root, directories, files) in os.walk(dir_path):
                     counts[key] = counts.get(key, 0) + 1
                     counts[to_key] = counts.get(to_key, 0) + 1
 
-# write_ws = write_wb.active
-# write_ws['A1'] = 'material_spec'
-# write_ws['B1'] = 'type_and_grade'
-# write_ws['C1'] = 'p no'
-# write_ws['D1'] = 'gr no'
-# write_ws['E1'] = 'count'
-#
-# for key, val in counts.items():
-#     arr = key.split(',')
-#     write_ws.append([arr[0], arr[1], arr[2], arr[3], val])
-#
-# write_wb.save('/Users/youngjin/Desktop/test/test.xlsx')
+write_ws = write_wb.active
+write_ws['A1'] = 'material_spec'
+write_ws['B1'] = 'type_and_grade'
+write_ws['C1'] = 'p no'
+write_ws['D1'] = 'gr no'
+write_ws['E1'] = 'count'
+
+for key, val in counts.items():
+    arr = key.split(',')
+    write_ws.append([arr[0], arr[1], arr[2], arr[3], val])
+
+write_wb.save('/Users/youngjin/Desktop/test/base_metals.xlsx')
 
 for item in counts.items():
     print(item)

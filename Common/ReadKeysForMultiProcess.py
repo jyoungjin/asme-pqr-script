@@ -17,8 +17,9 @@ for(root, directories, files) in os.walk(dir_path):
             file_path = os.path.join(root, file)
             with open(file_path, 'r') as file:
                 jsonData = json.load(file)
-            for key in jsonData[find_section].keys():
-                counts[key] = counts.get(key, 0)+1
+            if jsonData['pqr_info']['welding_process2'] != "":
+                for key in jsonData[find_section].keys():
+                    counts[key] = counts.get(key, 0)+1
 
 for item in counts.items():
     print(item)
