@@ -1,6 +1,5 @@
 import json
 import os
-import sys
 
 dir_path = "/Users/youngjin/workspace/json-data/asme-pqr"
 counts = dict()
@@ -19,9 +18,6 @@ for(root, directories, files) in os.walk(dir_path):
                         object["size(mm)"] = None
                     else:
                         sizeVal = sizeVal.strip("ø")
-                        object["size(mm)"] = float(sizeVal)
+                        object["_size(mm)"] = float(sizeVal)
                     with open(file_path, 'w', encoding='utf-8') as mk_f:
                         json.dump(jsonData, mk_f, indent=2, ensure_ascii=False)
-
-# for item in counts.keys():
-#     print(item, end=', ')

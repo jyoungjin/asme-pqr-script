@@ -16,7 +16,7 @@ for(root, directories, files) in os.walk(dir_path):
                 for key in object:
                     counts[key] = counts.get(key, 0)+1
 
-for item in sorted(counts.items()):
+for item in sorted(counts.items(), key=lambda x: x[1], reverse=True):
     print(item)
 
 print(len(counts))

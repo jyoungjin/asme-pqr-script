@@ -19,14 +19,14 @@ for(root, directories, files) in os.walk(dir_path):
                         if type(value) is str and "~" in value:
                             arr = value.split('~')
                             if float(arr[0]) > float(arr[1]):
-                                object['speed_min(mm/min)'] = float(arr[1])
-                                object['speed_max(mm/min)'] = float(arr[0])
+                                object['_speed_min(mm/min)'] = float(arr[1])
+                                object['_speed_max(mm/min)'] = float(arr[0])
                             else:
-                                object['speed_min(mm/min)'] = float(arr[0])
-                                object['speed_max(mm/min)'] = float(arr[1])
+                                object['_speed_min(mm/min)'] = float(arr[0])
+                                object['_speed_max(mm/min)'] = float(arr[1])
                         else:
-                            object['speed_min(mm/min)'] = float(value)
-                            object['speed_max(mm/min)'] = float(value)
+                            object['_speed_min(mm/min)'] = float(value)
+                            object['_speed_max(mm/min)'] = float(value)
 
                         with open(file_path, 'w', encoding='utf-8') as mk_f:
                             json.dump(jsonData, mk_f, indent=2, ensure_ascii=False)
