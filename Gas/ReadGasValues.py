@@ -18,13 +18,14 @@ for(root, directories, files) in os.walk(dir_path):
             file_path = os.path.join(root, file)
             with open(file_path, 'r') as file:
                 jsonData = json.load(file)
-            if find_key in jsonData['gas'][find_section]:
-                key = jsonData['gas'][find_section][find_key]
-                if type(key) == dict:
-                    for item in key.values():
-                        counts[item] = counts.get(item, 0) + 1
-                else:
-                    counts[key] = counts.get(key, 0) + 1
+            if find_section in jsonData['gas']:
+                if find_key in jsonData['gas'][find_section]:
+                    key = jsonData['gas'][find_section][find_key]
+                    if type(key) == dict:
+                        for item in key.values():
+                            counts[item] = counts.get(item, 0) + 1
+                    else:
+                        counts[key] = counts.get(key, 0) + 1
 
 sum = 0
 
